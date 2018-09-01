@@ -5,7 +5,7 @@ classdef Linear
     end
     
     methods (Static)
-        function constants = Initialize(StepSize)
+        function constants = Initialize(StepSize, SearchDirection,StepSizeMode)
 %           Model Structure 
             constants.model.targettype = 'Linear';
             constants.model.hunittype = 'Linear';
@@ -25,14 +25,14 @@ classdef Linear
             
 %           Optimization Strategy 
             constants.optimizemethod.adaptivelearning = 'Batch (off-line)';         % Learning Mode
-            constants.optimizemethod.searchdirection = 'Lbfgs';          % Search Method
+            constants.optimizemethod.searchdirection = SearchDirection;          % Search Method
             constants.optimizemethod.innercycles = 5;       % No. of inner cycles
             constants.optimizemethod.maxsearchdev = cosd(88); %% 88 degrees         Angular Deviation from Gradient?
             constants.optimizemethod.momentumconstant = 0.6;
             constants.optimizemethod.searchdirectionmaxnorm = 1.0;                  % Maximum Search Direction Norm
             constants.optimizemethod.percenteventsperupdate = 80;
 
-%           constants.optimizemethod.autostepsizemode = 'Auto-Stepsize';
+            constants.optimizemethod.autostepsizemode = StepSizeMode;
             constants.optimizemethod.levenmarqeigvalue = 1e-4;
     
 %            Step-size for Batch Learning
