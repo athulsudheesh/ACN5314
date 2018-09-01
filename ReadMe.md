@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-
 ### Setting up your environment 
 
 Before you start, make sure you have MATLAB R2018a or higher. Many files (*.mlx) won't work if you are using an older version of the the MATLAB 
