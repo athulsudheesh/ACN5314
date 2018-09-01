@@ -10,7 +10,7 @@ classdef Linear
             constants.model.targettype = 'Linear';
             constants.model.hunittype = 'Linear';
             constants.model.penaltytermweight = 0.001;
-            constants.model.nrhidden = 50;
+            constants.model.nrhidden = 1;
             constants.model.weightdensity = 10;
             constants.model.temperature = 1;
             constants.model.funkfilename = 'objfunction';
@@ -24,8 +24,8 @@ classdef Linear
             constants.initialconditions.wtsdev = 0.1;
             
 %           Optimization Strategy 
-            constants.optimizemethod.adaptivelearning = 'Adaptive (on-line)';         % Learning Mode
-            constants.optimizemethod.searchdirection = 'momentumdirection';          % Search Method
+            constants.optimizemethod.adaptivelearning = 'Batch (off-line)';         % Learning Mode
+            constants.optimizemethod.searchdirection = 'Lbfgs';          % Search Method
             constants.optimizemethod.innercycles = 5;       % No. of inner cycles
             constants.optimizemethod.maxsearchdev = cosd(88); %% 88 degrees         Angular Deviation from Gradient?
             constants.optimizemethod.momentumconstant = 0.6;
@@ -74,7 +74,7 @@ classdef Linear
             
             
         end
-        % 
+        % Function to initiate model training
         function [parameters,performancehistory, sazout, varnames] = train(trainingdata, constants)
             performancehistory = [];
             parameters = w_update(trainingdata,constants);
@@ -122,6 +122,10 @@ classdef Linear
            ', Z=',num2str(betazscore),', p=',num2str(thepvalue)]);
     end;
         end
+        function predict(parameters,constants,trainingdata)
+            finalsazout = computesazwoutputstats(parameters,constants,trainingdata);
+            displaysazwresults(finalsazout);
+        end 
     end
 end
 
