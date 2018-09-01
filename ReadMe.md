@@ -1,6 +1,3 @@
----
-typora-copy-images-to: ./misc/dialog_box_for_folder.png
----
 
 ### Setting up your environment 
 
