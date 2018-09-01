@@ -122,6 +122,10 @@ classdef Linear
            ', Z=',num2str(betazscore),', p=',num2str(thepvalue)]);
     end;
         end
+        function predict(parameters,constants,trainingdata)
+            finalsazout = computesazwoutputstats(parameters,constants,trainingdata);
+            displaysazwresults(finalsazout);
+        end 
     end
 end
 
