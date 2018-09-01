@@ -1,0 +1,49 @@
+Use simulated data? (0=no, 1 = yes):0
+*******************************************************************************
+                                                                               
+       STATISTICAL MACHINE LEARNING TOOLKIT (SMLtoolkit)                       
+                                                                               
+ Copyright 2013-2017  RMG Consulting, Incorporated                             
+                                                                               
+ Licensed under the Apache License, Version 2.0 (the "License")                
+ you may not use this file except in compliance with the License.              
+ You may obtain a copy of the License at                                       
+                                                                               
+       http://www.apache.org/licenses/LICENSE-2.0                              
+                                                                               
+ Unless required by applicable law or agreed to in writing, software           
+ distributed under the License is distributed on an "AS IS" BASIS,             
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.      
+ See the License for the specific language governing permissions and           
+ limitations under the License.                                                
+                                                                               
+ Tutorial videos, software updates, and software bug fixes located at:         
+               www.learningmachines101.com                                     
+                                                                               
+ Please see the unpublished book manuscript entitled                           
+ "Statistical Machine Learning" by Richard M. Golden                           
+ for details regarding the design and analysis of the algorithms in this       
+ in this software package.                                                     
+                                                                               
+*** Build: 021    REVISION DATE: March 27, 2018 ***                            
+MATLAB Version:9.4.0.813654 (R2018a)                                           
+*******************************************************************************
+
+constants = 
+
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+                  sa: [1×1 struct]
+        initialwtmag: 1
+    stoppingcriteria: [1×1 struct]
+      stepsizesearch: [1×1 struct]
+         temperature: [1×1 struct]
+     searchdirection: [1×1 struct]
+
+0) Metropolis Random Search, 1) Gibbs Sampler with Random Visits, 2) stepwise search:0
+************************ PERFORMANCE OF MODEL USING ALL PREDICTORS **********
+Iteration #1, Error = 0.31217, grad-norm = 0.3639
+Iteration #2, Error = 0.078698, grad-norm = 1.1352e-16
+<a href="matlab: opentoline('/Users/Athul/Documents/SML/SML ToolBox/SMLalgorithms/inferencetoolbox/computemodelfits.m',21,1)">21  </a>AhatinvBhat = Ahatinv*Bhat;
+if system_dependent('IsDebugMode')==1, dbquit; end
+demosearch

@@ -1,0 +1,14 @@
+<TITLE>memoexample.txt</TITLE>           
+<TITLE>c1</TITLE>                        
+human interface computer                 
+<TITLE>c2</TITLE>                        
+survey user computer system response time
+<TITLE>c3</TITLE>                        
+EPS user interface                       
+<TITLE>c4</TITLE>                        
+system human system EPS                  
+<TITLE>c5</TITLE> user response time     
+<TITLE>m1</TITLE> trees                  
+<TITLE>m2</TITLE> graph trees            
+<TITLE>m3</TITLE> graph minors trees     
+<TITLE>m4</TITLE> graph minors survey    
