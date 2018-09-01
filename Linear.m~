@@ -74,23 +74,53 @@ classdef Linear
             
             
         end
-        
-        function [parameters,performancehistory, sazout] = train(trainingdata, constants)
+        % 
+        function [parameters,performancehistory, sazout, varnames] = train(trainingdata, constants)
             performancehistory = [];
             parameters = w_update(trainingdata,constants);
-            [parameters,performancehistory, sazout] = sazwdescent_Regression(trainingdata,parameters,performancehistory,constants);
+            [parameters,performancehistory, sazout, varnames] = sazwdescent_Regression(trainingdata,parameters,performancehistory,constants);
         end
-        
+        % Function to display Model Statistics 
         function display_statistics(performancehistory, sazout)
-            disp('----------------------------------------------------------')
-            disp('Number of iterations = ',num2str(performancehistory.numberiterations));
-            disp('Objective Function Value = ',num2str(performancehistory.finalobjfunctionval));
-            disp('Gradient Infinity Norm (convergence criteria) = ',num2str(performancehistory.finalgradval));
-            if ~isnan(sazout.condnumhessian),
-        disp(['Hessian Condition Number (local minimum test) = ',num2str(sazout.condnumhessian),...
-         ', Largest Eigenvalue = ',num2str(sazout.maxhesseig)]));
-   end;
-            disp('----------------------------------------------------------')
+            usermessage = strvcat(...
+    ['Number of iterations = ',num2str(performancehistory.numberiterations)],...
+    ['Objective Function Value = ',num2str(performancehistory.finalobjfunctionval)],...
+    ['Gradient Infinity Norm (convergence criteria) = ',num2str(performancehistory.finalgradval)]);
+    if ~isnan(sazout.condnumhessian),
+        usermessage = strvcat(usermessage,...
+        ['Hessian Condition Number (local minimum test) = ',num2str(sazout.condnumhessian)],...
+         ['Largest Eigenvalue = ',num2str(sazout.maxhesseig)]);
+    end;
+    disp('----------------------------Model Statistics------------------------------');
+    disp('  ');
+    disp(usermessage);
+    disp('  ');
+    disp('  ');
+    disp('----------------------Model Misspecification Check------------------------');
+    disp('  ');
+    disp(['Information Matrix Scores:']);
+    disp(['OPG Condition Number = ',num2str(sazout.condnumopg)])
+      disp(['Hessian Condition Number = ',num2str(sazout.condnumhessian)]);
+    disp(['tr(inv(a)b) = ',num2str(performancehistory.traceainvb),', ',...
+            'tr(inv(b)a) = ',num2str(performancehistory.tracebinva),', ',...
+            'det(inv(a)b) = ',num2str(performancehistory.detainvb)]);
+        disp(' ');
+    disp('--------------------------------------------------------------------------');
+        end
+        % Function to Display Parameter estimates
+        function parameter_estimates(sazout, varnames, parameters)
+            disp(' ');
+    nrbetas = length(sazout.stderrors);
+    betavector = parameters;
+    betaerrors = sazout.stderrors;
+    nrpredictorlabels = length(varnames) - sazout.nrtargets;
+    for betaindex = 1:nrpredictorlabels,
+        betalabel = varnames{betaindex+sazout.nrtargets};
+        betazscore = betavector(betaindex)/(betaerrors(betaindex) + eps);
+        thepvalue = 1 - gammainc((betazscore)^2/2,1/2); %2-sided confidence interval
+        disp([betalabel,' Beta = ',num2str(betavector(betaindex)),...
+           ', Z=',num2str(betazscore),', p=',num2str(thepvalue)]);
+    end;
         end
     end
 end

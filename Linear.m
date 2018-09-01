@@ -74,13 +74,13 @@ classdef Linear
             
             
         end
-        
+        % Function to initiate model training
         function [parameters,performancehistory, sazout, varnames] = train(trainingdata, constants)
             performancehistory = [];
             parameters = w_update(trainingdata,constants);
             [parameters,performancehistory, sazout, varnames] = sazwdescent_Regression(trainingdata,parameters,performancehistory,constants);
         end
-        
+        % Function to display Model Statistics 
         function display_statistics(performancehistory, sazout)
             usermessage = strvcat(...
     ['Number of iterations = ',num2str(performancehistory.numberiterations)],...
@@ -107,6 +107,7 @@ classdef Linear
         disp(' ');
     disp('--------------------------------------------------------------------------');
         end
+        % Function to Display Parameter estimates
         function parameter_estimates(sazout, varnames, parameters)
             disp(' ');
     nrbetas = length(sazout.stderrors);

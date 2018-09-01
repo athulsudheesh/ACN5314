@@ -1,4 +1,4 @@
-### Setting up your environment 
+## Setting up your environment 
 
 Before you start, make sure you have MATLAB R2018a or higher. Many files (*.mlx) won't work if you are using an older version of the the MATLAB 
 
@@ -15,3 +15,7 @@ Click `Add Folder` and choose `ACN5314`. Also add `data` folder inside  `ACN5314
 Once done, repeat `Set Path` once again, but this time choose `Add with Subfolders` and open `SMLAlgorithms` inside `SML Toolbox` folder
 
 Once complete, `Save` and `Close` the `Set Path` dialog box.
+
+# Running the models 
+
+- For Linear regression open and run `LinearRegression.mlx` file 
