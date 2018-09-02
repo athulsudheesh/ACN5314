@@ -1,4 +1,4 @@
-function [parameters] = w_update(trainingdata,constants)
+function [parameters] = w_update(trainingdata, constants)
 % updating weight parameters 
 nrtargets = trainingdata.nrtargets;
 inputvectordim = trainingdata.inputvectordim;

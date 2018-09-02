@@ -1,6 +1,8 @@
-[TOC]
+### <u>Software Status</u>
 
-
+- [x] Linear Machines 
+- [ ] Perceptron
+- [ ] Lunar Lander
 
 ## Setting up your environment 
 
@@ -14,12 +16,14 @@ On clicking `Set Path`, a dialog box will pop up as shown in the below picture
 
 ![](./misc/dialog_box_for_folder.png)
 
-Click `Add Folder` and choose `ACN5314`. Also add `data` folder inside  `ACN5314`.
-
-Once done, repeat `Set Path` once again, but this time choose `Add with Subfolders` and open `SMLAlgorithms` inside `SML Toolbox` folder
-
-Once complete, `Save` and `Close` the `Set Path` dialog box.
+- Click `Add with Subfolders` and choose `SMLAlgorithms` folder (SMLToolbox &rarr; SMLAlgorithms) 
+- Save and Close the dialog box
 
 # Running the models 
 
-- For Linear regression open and run `LinearRegression.mlx` file 
+- Linear Machines 
+  - Do `Add with Subfolders` for `LinearMachines` folder.
+  - Load and Run `LinearMachines`  
+
+
+

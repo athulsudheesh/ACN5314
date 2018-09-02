@@ -1,16 +1,17 @@
-classdef Linear
+classdef Neuron
     % Linear Regression Class
     properties
         constants;
     end
     
     methods (Static)
-        function constants = Initialize(StepSize, SearchDirection)
+        function constants = Initialize(StepSize, SearchDirection,StepSizeMode,...
+                hidden_units, output_response_function, hidden_unit_function)
 %           Model Structure 
-            constants.model.targettype = 'Linear';
-            constants.model.hunittype = 'Linear';
+            constants.model.targettype = output_response_function;
+            constants.model.hunittype = hidden_unit_function;
             constants.model.penaltytermweight = 0.001;
-            constants.model.nrhidden = 1;
+            constants.model.nrhidden = hidden_units;
             constants.model.weightdensity = 10;
             constants.model.temperature = 1;
             constants.model.funkfilename = 'objfunction';
@@ -32,7 +33,7 @@ classdef Linear
             constants.optimizemethod.searchdirectionmaxnorm = 1.0;                  % Maximum Search Direction Norm
             constants.optimizemethod.percenteventsperupdate = 80;
 
-%           constants.optimizemethod.autostepsizemode = 'Auto-Stepsize';
+            constants.optimizemethod.autostepsizemode = StepSizeMode;
             constants.optimizemethod.levenmarqeigvalue = 1e-4;
     
 %            Step-size for Batch Learning
@@ -77,8 +78,8 @@ classdef Linear
         % Function to initiate model training
         function [parameters,performancehistory, sazout, varnames] = train(trainingdata, constants)
             performancehistory = [];
-            parameters = w_update(trainingdata,constants);
-            [parameters,performancehistory, sazout, varnames] = sazwdescent_Regression(trainingdata,parameters,performancehistory,constants);
+            [parameters,constants] = w_update(trainingdata,constants);
+            [parameters,performancehistory, sazout, varnames] = sazwdescent_Perceptron(trainingdata,parameters,performancehistory,constants);
         end
         % Function to display Model Statistics 
         function display_statistics(performancehistory, sazout)

@@ -1,4 +1,4 @@
-function [xt,performancehistory, sazout, varnames] = sazwdescent_Regression(thedata,parameters,performancehistory,constants);
+function [parameters,performancehistory, sazout, varnames] = sazwdescent_Regression(thedata,parameters,performancehistory,constants);
 % USAGE: [xt,performancehistory] = sazwdescent(thedata,parameters,performancehistory,constants);
 
 %-----------------------------------------------------------------------------
