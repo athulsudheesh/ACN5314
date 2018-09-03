@@ -29,13 +29,8 @@ cd .. % We need to go one more level up. Now you should be back to ACN5314 direc
 
 # Running the models 
 
-- Linear Machines, type:
-
-  ```matlab
-  LinearMachines
-  ```
-
-  and hit enter.
+- Linear Machines 
+  Open `LinearMachines.mlx`
 
 
 
