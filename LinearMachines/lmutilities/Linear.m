@@ -32,11 +32,6 @@ classdef Linear
             constants.optimizemethod.momentumconstant = 0.6;
             constants.optimizemethod.searchdirectionmaxnorm = 1.0;                  % Maximum Search Direction Norm
             constants.optimizemethod.percenteventsperupdate = 80;
-            
-            if StepSizeMode == 'Constant-Stepsize'
-                StepSizeMode = '';
-            end
-
             constants.optimizemethod.autostepsizemode = StepSizeMode;
             constants.optimizemethod.levenmarqeigvalue = 1e-4;
     
