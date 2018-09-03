@@ -4,26 +4,38 @@
 - [ ] Perceptron
 - [ ] Lunar Lander
 
+## Downloading the Software 
+
+![](./misc/how_to_download.png)
+
 ## Setting up your environment 
 
 Before you start, make sure you have MATLAB R2018a or higher. Many files (*.mlx) won't work if you are using an older version of the the MATLAB 
 
 To ensure everything works correctly, it is important that you setup the software path so MATLAB can find the right function libraries.
 
-![](./misc/Toolbar.png)
+Open the `SMLalgorithms` Folder (`ACN5314` &rarr; `SMLToolBox` &rarr; `SMLalgorithms`)
 
-On clicking `Set Path`, a dialog box will pop up as shown in the below picture 
+Now run
 
-![](./misc/dialog_box_for_folder.png)
+```matlab
+updatesoftwarepath; % Asks MATLAB to look into SMLalgorithms while you run programs in this session 
+cd .. % Changes your current directory one level up
+cd .. % We need to go one more level up. Now you should be back to ACN5314 directory
 
-- Click `Add with Subfolders` and choose `SMLAlgorithms` folder (SMLToolbox &rarr; SMLAlgorithms) 
-- Save and Close the dialog box
+```
+
+
 
 # Running the models 
 
-- Linear Machines 
-  - Do `Add with Subfolders` for `LinearMachines` folder.
-  - Load and Run `LinearMachines`  
+- Linear Machines, type:
+
+  ```matlab
+  LinearMachines
+  ```
+
+  and hit enter.
 
 
 
