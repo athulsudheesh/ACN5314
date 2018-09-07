@@ -54,7 +54,7 @@ else
     path(path,[softwarefolder,'/SMLalgorithms/inferencetoolbox']);
 end
 path
-copyrightinfo;
+%copyrightinfo;
 disp(['MATLAB Version: ',version]);
 disp('MATLAB Path Updated! ');
 disp(' ');
