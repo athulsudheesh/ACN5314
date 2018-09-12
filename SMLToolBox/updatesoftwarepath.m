@@ -49,12 +49,12 @@ if (ispc == 1) % computer is windows use the following for directories
 else
     path(path,[softwarefolder,'/SMLalgorithms']);
     path(path,[softwarefolder,'/SMLalgorithms/sazwtoolbox']);
-    path(path,[softwarefolder,'/SMLalgorithms/smlutilities']);
+    path(path,[softwarefolder,'/SMLalgorithms/fsmlutilities']);
     path(path,[softwarefolder,'/SMLalgorithms/mhtoolbox']);
     path(path,[softwarefolder,'/SMLalgorithms/inferencetoolbox']);
 end
 path
-%copyrightinfo;
+copyrightinfo;
 disp(['MATLAB Version: ',version]);
 disp('MATLAB Path Updated! ');
 disp(' ');

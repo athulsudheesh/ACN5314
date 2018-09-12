@@ -1,7 +1,7 @@
 ### <u>Software Status</u>
 
 - [x] Linear Machines 
-- [ ] Perceptron
+- [x] Perceptron
 - [ ] Lunar Lander
 
 ## Downloading the Software 
@@ -19,10 +19,7 @@ Open the `SMLalgorithms` Folder (`ACN5314` &rarr; `SMLToolBox` &rarr; `SMLalgori
 Now run
 
 ```matlab
-updatesoftwarepath; % Asks MATLAB to look into SMLalgorithms while you run programs in this session 
-cd .. % Changes your current directory one level up
-cd .. % We need to go one more level up. Now you should be back to ACN5314 directory
-
+updatesoftwarepath; % Asks MATLAB to look into SMLalgorithms while you run programs in this session
 ```
 
 
@@ -31,6 +28,6 @@ cd .. % We need to go one more level up. Now you should be back to ACN5314 direc
 
 - Linear Machines 
   Open `LinearMachines.mlx`
-
-
+- Perceptron
+  Open `Perceptron.mlx`
 

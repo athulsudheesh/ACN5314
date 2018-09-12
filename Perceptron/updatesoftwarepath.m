@@ -40,28 +40,17 @@ function updatesoftwarepath;
 
 softwarefolder = pwd;
 if (ispc == 1) % computer is windows use the following for directories
-    path(path,[softwarefolder,'\SMLalgorithms']);
-    path(path,[softwarefolder,'\SMLalgorithms\sazwtoolbox']);
-    path(path,[softwarefolder,'\SMLalgorithms\smlutilities']);
-    path(path,[softwarefolder,'\SMLalgorithms\mhtoolbox']);
-    path(path,[softwarefolder,'\SMLalgorithms\modelselectbox']);
-    path(path,[softwarefolder,'\SMLalgorithms\inferencetoolbox']);
+   % path(path,[softwarefolder,'\LinearMachines']);
+    path(path,[softwarefolder,'\PerceptronUtilities']);
+    path(path,[softwarefolder,'\data']);
+
 else
-    path(path,[softwarefolder,'/SMLalgorithms']);
-    path(path,[softwarefolder,'/SMLalgorithms/sazwtoolbox']);
-    path(path,[softwarefolder,'/SMLalgorithms/fsmlutilities']);
-    path(path,[softwarefolder,'/SMLalgorithms/mhtoolbox']);
-    path(path,[softwarefolder,'/SMLalgorithms/inferencetoolbox']);
+   % path(path,[softwarefolder,'/LinearMachines']);
+    path(path,[softwarefolder,'/PerceptronUtilities']);
+    path(path,[softwarefolder,'/data']);
 end
 path
 %copyrightinfo;
-disp(['MATLAB Version: ',version]);
-disp('MATLAB Path Updated! ');
-disp(' ');
-disp('Warning! After using the FSML software, you might want to close up MATLAB');
-disp('and then re-open MATLAB to restore your original MATLAB path!');
-disp(' ');
-disp('Now when you change current MATLAB folder you will have access to SML toolkit!');
 end
 
 

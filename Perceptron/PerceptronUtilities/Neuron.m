@@ -76,7 +76,7 @@ classdef Neuron
             
         end
         % Function to initiate model training
-        function [parameters,performancehistory, sazout, varnames] = train(trainingdata, constants)
+        function [parameters,performancehistory, sazout, varnames, constants] = train(trainingdata, constants)
             performancehistory = [];
             [parameters,constants] = w_update(trainingdata,constants);
             [parameters,performancehistory, sazout, varnames] = sazwdescent_Perceptron(trainingdata,parameters,performancehistory,constants);
@@ -117,10 +117,14 @@ classdef Neuron
     nrpredictorlabels = length(varnames) - sazout.nrtargets;
     for betaindex = 1:nrpredictorlabels,
         betalabel = varnames{betaindex+sazout.nrtargets};
-        betazscore = betavector(betaindex)/(betaerrors(betaindex) + eps);
-        thepvalue = 1 - gammainc((betazscore)^2/2,1/2); %2-sided confidence interval
-        disp([betalabel,' Beta = ',num2str(betavector(betaindex)),...
-           ', Z=',num2str(betazscore),', p=',num2str(thepvalue)]);
+        if ~isnan(betaerrors),
+            betazscore = betavector(betaindex)/(betaerrors(betaindex) + eps);
+            thepvalue = 1 - gammainc((betazscore)^2/2,1/2); %2-sided confidence interval
+            disp([betalabel,' Beta = ',num2str(betavector(betaindex)),...
+                    ', Z=',num2str(betazscore),', p=',num2str(thepvalue)]);
+        else
+            disp([betalabel,' Beta = ',num2str(betavector(betaindex))]);
+        end;
     end;
         end
         function predict(parameters,constants,trainingdata)

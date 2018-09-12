@@ -295,6 +295,8 @@ performancehistory.predictedresponses = predictedresponses;
 sazout = computesazwoutputstats(  xt,constants,thedata);
 
 qdim = length(xt);
+performancehistory.ahat = sazout.ahat;
+performancehistory.bhat = sazout.bhat;
 performancehistory.traceainvb =sazout.traceainvb;
 performancehistory.tracebinva = sazout.tracebinva;
 performancehistory.logdetainvb = sazout.logdetainvb;
@@ -333,19 +335,30 @@ end;
     if ~isnan(sazout.condnumhessian),
         usermessage = strvcat(usermessage,...
         ['Hessian Condition Number (local minimum test) = ',num2str(sazout.condnumhessian),...
-         ', Largest Eigenvalue = ',num2str(sazout.maxhesseig)]);
+         ', Largest Eigenvalue = ',num2str(sazout.maxhesseig),', OPG Condition Number = ',num2str(sazout.condnumopg)]);
     end;
     disp('----------------------------------------------------------');
     disp(usermessage);
     disp('----------------------------------------------------------');
-    disp('If Maximum Likelihood Estimation, here are specification scores:');
-    disp('Please see "Checking for Model Misspecification Box" in Book p. 444');
-    disp(['IM Scores:']);
-    disp(['OPG Condition Number = ',num2str(sazout.condnumopg),', ',...
-            'Hessian Condition Number = ',num2str(sazout.condnumhessian)]);
-    disp(['tr(inv(a)b) = ',num2str(performancehistory.traceainvb),', ',...
-            'tr(inv(b)a) = ',num2str(performancehistory.tracebinva),', ',...
-            'det(inv(a)b) = ',num2str(performancehistory.detainvb)]);
+    disp('MISSPECIFICATION ANALYSES:');
+    disp('Misspecification indicated if magnitude of any IM discrepancy measure is large:');
+    ahat = performancehistory.ahat; bhat = performancehistory.bhat;
+    traceahat = trace(ahat); tracebhat = trace(bhat); detahat = det(ahat); detbhat = det(bhat);
+    qdim = length(ahat);
+    if ~isnan(ahat) & ~isnan(bhat),
+        if (min(eig(ahat)) > eps) & (min(eig(bhat)) > eps),
+            ainvb = pinv(ahat)*bhat; binva = pinv(bhat)*ahat;
+            if ainvb < eps, ainvb = eps; end;
+            if binva < eps, binva = eps; end;
+            condahat = cond(ahat); condbhat = cond(bhat);
+            logdetab = abs(log(det(ainvb))); 
+            %logdetba = log(det(binva));
+            rloggaicab = abs(log((1/qdim)*trace(ainvb))); 
+            rloggaicba = abs(log((1/qdim)*trace(binva)));
+            disp(['GAIC IM Discrepancy  =',num2str(rloggaicab),', Inverted GAIC IM Discrepancy = ',num2str(rloggaicba),...
+                  ', Determinant IM Discrepancy = ',num2str(logdetab)]);
+        end;
+    end;
     disp('-----------------------------------------------------------');
     disp(' ');
     nrbetas = length(sazout.stderrors);
@@ -354,10 +367,14 @@ end;
     nrpredictorlabels = length(varnames) - nrtargets;
     for betaindex = 1:nrpredictorlabels,
         betalabel = varnames{betaindex+nrtargets};
-        betazscore = betavector(betaindex)/(betaerrors(betaindex) + eps);
-        thepvalue = 1 - gammainc((betazscore)^2/2,1/2); %2-sided confidence interval
-        disp([betalabel,' Beta = ',num2str(betavector(betaindex)),...
-           ', Z=',num2str(betazscore),', p=',num2str(thepvalue)]);
+        if ~isnan(betaerrors),
+            betazscore = betavector(betaindex)/(betaerrors(betaindex) + eps);
+            thepvalue = 1 - gammainc((betazscore)^2/2,1/2); %2-sided confidence interval
+            disp([betalabel,' Beta = ',num2str(betavector(betaindex)),...
+                    ', Z=',num2str(betazscore),', p=',num2str(thepvalue)]);
+        else
+            disp([betalabel,' Beta = ',num2str(betavector(betaindex))]);
+        end;
     end;
 %end;
 

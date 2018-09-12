@@ -2,11 +2,13 @@ function demolunarlander()
 % USAGE: demolunarlander;
 
 copyrightinfo;
-disp('Lunar Lander Program. Copyright (c) 2012-2016');
-%rng('shuffle'); % apply random seed to random number generator
+disp('Lunar Lander Program. Copyright (c) 2012-2018');
 
-disp('WARNING! Using random seed which makes sequence predictable!!!');
-rng(123); % use predictable random seed to seed generator
+disp('WARNING!: Using different random seed to make sequence unpredictable!');
+rng('shuffle'); % apply random seed to random number generator
+
+% disp('WARNING! Using random seed which makes sequence predictable!!!');
+% rng(123); % use predictable random seed to seed generator
 
 params = parametersetup;  % Call Function for parametersetup;
 % 
