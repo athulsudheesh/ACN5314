@@ -2,7 +2,7 @@
 
 - [x] Linear Machines 
 - [x] Perceptron
-- [ ] Lunar Lander
+- [x] Lunar Lander
 
 ## Downloading the Software 
 
