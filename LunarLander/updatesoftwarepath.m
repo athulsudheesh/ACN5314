@@ -40,26 +40,15 @@ function updatesoftwarepath;
 
 softwarefolder = pwd;
 if (ispc == 1) % computer is windows use the following for directories
-    path(path,[softwarefolder,'\sazwtoolbox']);
-    path(path,[softwarefolder,'\smlutilities']);
-    path(path,[softwarefolder,'\mhtoolbox']);
-    path(path,[softwarefolder,'\modelselectbox']);
-    path(path,[softwarefolder,'\inferencetoolbox']);
+   % path(path,[softwarefolder,'\LinearMachines']);
+    path(path,[softwarefolder,'\LLUtilities']);
+
 else
-    path(path,[softwarefolder,'/sazwtoolbox']);
-    path(path,[softwarefolder,'/smlutilities']);
-    path(path,[softwarefolder,'/mhtoolbox']);
-    path(path,[softwarefolder,'/inferencetoolbox']);
+   % path(path,[softwarefolder,'/LinearMachines']);
+    path(path,[softwarefolder,'/LLUtilities']);
 end
 path
 %copyrightinfo;
-disp(['MATLAB Version: ',version]);
-disp('MATLAB Path Updated! ');
-disp(' ');
-disp('Warning! After using the FSML software, you might want to close up MATLAB');
-disp('and then re-open MATLAB to restore your original MATLAB path!');
-disp(' ');
-disp('Now when you change current MATLAB folder you will have access to SML toolkit!');
 end
 
 

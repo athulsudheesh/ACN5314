@@ -1,2 +1,0 @@
-Human machine interface for ABC
-computer applications
