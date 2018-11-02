@@ -1,6 +1,9 @@
 function normfeaturedataset = imagerecoder(imagefilelist,nrfeatures,displayon)
 % UAGE: normfeaturedataset =  imagerecoder(imagefilelist,nrfeatures,displayon)
 
+disp('Dominant feature will be deleted.');
+disp('Also intercept feature will be added.');
+pause(2);
 %
 % Working with Gray Scale Images to keep things simple.
 %
@@ -35,8 +38,11 @@ for i = 1:nrimagefiles,
     for k = 1:nrfeatures,
         featuredataset(i,k) = umatrix(:,k)'*grayimagedatalist{i} * vmatrix(:,k);
     end; % end loop k through features
-    normfeaturedataset(i,:) = featuredataset(i,:)/(norm(featuredataset(i,:))+eps);
+    recodedvector = featuredataset(i,:)/(norm(featuredataset(i,:))+eps);
     reconstructedimage = umatrix * diag(featuredataset(i,:)) * vmatrix';
+    recodedvector = recodedvector/(norm(recodedvector) + eps);
+    recodedvector = [recodedvector(2:nrfeatures) 1]; % DELETE DOMINANT FREQUENCY AND ADD INTERCEPT
+    normfeaturedataset(i,:) = recodedvector;
     
 % Now we will display the results as we construct the feature data set
 % if the "displayon" flag is set equal to 1.
@@ -56,7 +62,6 @@ for i = 1:nrimagefiles,
         title('Reconstructed Image');
         
         subplot(2,2,4); % Recoded Vector
-        recodedvector = normfeaturedataset(i,:);
         bar(recodedvector);
         ylabel('Feature Value');
         xlabel('Feature Id');
@@ -64,10 +69,26 @@ for i = 1:nrimagefiles,
         
         % Pause for 5 seconds for display
         disp(['Displaying Image #',num2str(i)]);
-        pause(5);
+        pause(2);
     end;
 end; % end loop i through images
 
+% Write a spreadsheet where each row is an image
+% and each column is a feature
+[nrstimuli,nrfeatures] = size(normfeaturedataset);
+outputfilename = 'codedimagedata.xlsx';
+if exist(outputfilename),
+    delete(outputfilename);
+end;
+featurevectorscell = num2cell(normfeaturedataset);
+nrfeaturesminus1 = nrfeatures - 1;
+for k = 1:nrfeaturesminus1,
+    featurelabel{k} = ['f',num2str(k)];
+end;
+featurelabel{nrfeatures} = 'Intercept';
+outputimage = [featurelabel; featurevectorscell];
 
-
-
+xlswrite(outputfilename,outputimage);
+disp(['Recoded Data has been saved to the spreadsheet "',outputfilename,'"']);
+disp('NOTE: Dominant Feature has been deleted from display and feature data set.');
+disp('NOTE: Intercept Feature has been added to feature data set.');

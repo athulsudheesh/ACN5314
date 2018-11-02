@@ -351,7 +351,7 @@ end;
             if ainvb < eps, ainvb = eps; end;
             if binva < eps, binva = eps; end;
             condahat = cond(ahat); condbhat = cond(bhat);
-            logdetab = abs(log(det(ainvb))); 
+            logdetab = abs((1/qdim)*log(det(ainvb))); 
             %logdetba = log(det(binva));
             rloggaicab = abs(log((1/qdim)*trace(ainvb))); 
             rloggaicba = abs(log((1/qdim)*trace(binva)));

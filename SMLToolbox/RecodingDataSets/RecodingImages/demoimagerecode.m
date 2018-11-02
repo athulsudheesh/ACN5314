@@ -1,4 +1,4 @@
-
+dir
 % Select Image files for processing in local directory
 [filelist, pathname] = uigetfile('*.jpg', 'Select 2 or MORE image files of type JPG:','Multiselect','On');
 
@@ -20,12 +20,3 @@ displayon = 1;
 % simple.
 normfeaturedataset = imagerecoder(filelist,nrfeatures,displayon);
 
-
-% Write a spreadsheet where each row is an image
-% and each column is a feature
-outputfilename = 'codedimagedata.xlsx';
-if exist(outputfilename),
-    delete(outputfilename);
-end;
-xlswrite(outputfilename,normfeaturedataset,displayon);
-disp(['Recoded Data has been saved to the spreadsheet "',outputfilename,'"']);
