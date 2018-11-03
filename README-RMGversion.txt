@@ -6,3 +6,8 @@ STEP 5: Now use the "open" command from the MATLAB interface to open the ".mlx" 
 STEP 6: Set the parameters
 STEP 7: Hit the green RUN button on the interface
 STEP 8: You will see "precision" and "recall" and other statistics for training and test data printed out!!!
+
+WARNING!
+If you are using the software folder "LinearMachines" then you must exit MATLAB
+and then start up MATLAB again to clear the path if you want to switch
+to "Perceptron".
