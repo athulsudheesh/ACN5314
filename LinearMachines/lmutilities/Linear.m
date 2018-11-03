@@ -6,7 +6,8 @@ classdef Linear
     
     methods (Static)
         function constants = Initialize(StepSize, SearchDirection,...
-                StepSizeMode, LearningMode)
+                StepSizeMode, LearningMode, adaptive_maxiterations,...
+                batch_maxiterations)
 %           Model Structure 
             constants.model.targettype = 'Linear';
             constants.model.hunittype = 'Linear';
@@ -45,14 +46,14 @@ classdef Linear
             constants.wolfestep.minstepsize = 1e-5;
     
 %           Stepsize for Adaptive Learning
-            constants.adaptivestep.maxiterations = 300;
+            constants.adaptivestep.maxiterations = adaptive_maxiterations;
             constants.adaptivestep.initialstepsize = 0.01;
             constants.adaptivestep.initialconstanttime = 20;
             constants.adaptivestep.searchhalflife = constants.adaptivestep.maxiterations/4;
             constants.adaptivestep.convergehalflife = constants.adaptivestep.maxiterations/2;
 
 %           Stopping Criteria
-            constants.stoppingcriteria.maxiterations = 300;
+            constants.stoppingcriteria.maxiterations = batch_maxiterations;
             constants.stoppingcriteria.gradmax = 1e-4;
             constants.stoppingcriteria.diffmax = 1e-12;
             

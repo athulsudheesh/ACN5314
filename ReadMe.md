@@ -1,33 +1,8 @@
-### <u>Software Status</u>
-
-- [x] Linear Machines 
-- [x] Perceptron
-- [x] Lunar Lander
-
-## Downloading the Software 
-
-![](./misc/how_to_download.png)
-
-## Setting up your environment 
-
-Before you start, make sure you have MATLAB R2018a or higher. Many files (*.mlx) won't work if you are using an older version of the the MATLAB 
-
-To ensure everything works correctly, it is important that you setup the software path so MATLAB can find the right function libraries.
-
-Open the `SMLalgorithms` Folder (`ACN5314` &rarr; `SMLToolBox` &rarr; `SMLalgorithms`)
-
-Now run
-
-```matlab
-updatesoftwarepath; % Asks MATLAB to look into SMLalgorithms while you run programs in this session
-```
-
-
-
-# Running the models 
-
-- Linear Machines 
-  Open `LinearMachines.mlx`
-- Perceptron
-  Open `Perceptron.mlx`
-
+STEP 1: set your current MATLAB folder to: ACN5314
+STEP 2: type in the command: >>updatesofwarepath
+STEP 3: Typically at this point you will go into the folder called "RecodingDataSets" to prepare your data
+STEP 4: Now change to the folder "LinearMachines" or "Perceptron"
+STEP 5: Now use the "open" command from the MATLAB interface to open the ".mlx" file
+STEP 6: Set the parameters
+STEP 7: Hit the green RUN button on the interface
+STEP 8: You will see "precision" and "recall" and other statistics for training and test data printed out!!!

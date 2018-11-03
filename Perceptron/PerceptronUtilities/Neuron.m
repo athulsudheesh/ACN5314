@@ -6,7 +6,8 @@ classdef Neuron
     
     methods (Static)
         function constants = Initialize(StepSize, SearchDirection,StepSizeMode,...
-                hidden_units, output_response_function, hidden_unit_function)
+                hidden_units, output_response_function, hidden_unit_function,...
+                 adaptive_maxiterations, batch_maxiterations)
 %           Model Structure 
             constants.model.targettype = output_response_function;
             constants.model.hunittype = hidden_unit_function;
@@ -46,14 +47,14 @@ classdef Neuron
             constants.wolfestep.minstepsize = 1e-5;
     
 %           Stepsize for Adaptive Learning
-            constants.adaptivestep.maxiterations = 300;
+            constants.adaptivestep.maxiterations = adaptive_maxiterations;
             constants.adaptivestep.initialstepsize = 0.01;
             constants.adaptivestep.initialconstanttime = 20;
             constants.adaptivestep.searchhalflife = constants.adaptivestep.maxiterations/4;
             constants.adaptivestep.convergehalflife = constants.adaptivestep.maxiterations/2;
 
 %           Stopping Criteria
-            constants.stoppingcriteria.maxiterations = 300;
+            constants.stoppingcriteria.maxiterations = batch_maxiterations;
             constants.stoppingcriteria.gradmax = 1e-4;
             constants.stoppingcriteria.diffmax = 1e-12;
             
