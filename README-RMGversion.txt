@@ -1,3 +1,7 @@
+NOTE THIS VERSION OF THE SOFTWARE USING ".MLX" files which are LIVE
+MATLAB SCRIPTS. You need to OPEN these using the MATLAB Graphical
+user interface and RUN them by using the GREEN RUN button on the Interface.
+
 STEP 1: set your current MATLAB folder to: ACN5314
 STEP 2: type in the command: >>updatesofwarepath
 STEP 3: Typically at this point you will go into the folder called "RecodingDataSets" to prepare your data
@@ -11,3 +15,7 @@ WARNING!
 If you are using the software folder "LinearMachines" then you must exit MATLAB
 and then start up MATLAB again to clear the path if you want to switch
 to "Perceptron".
+
+Similarly, if you start using the "Perceptron" its best to exit MATLAB
+and then start up MATLAB again to clear the path if you want to switch
+the the "LinearMachines"
